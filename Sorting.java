@@ -48,6 +48,20 @@ public class Sorting {
 			data[i] = temp;
 		}
 	}
+	public int[] bubbleSort(int[] data){
+		  int length = data.length;
+		  int tmp = 0;
+		  for(int i = 0;i<length;i++){
+		    for(int j = (length-1);j>=(i+1);j--){
+		      if(data[j]<data[j-1]){
+		        tmp = data[j];
+		        data[j]=data[j-1];
+		        data[j-1]=tmp;
+		      }
+		    }
+		  }
+		  return data;
+		}
 	public static void main(String[] args){
 		int[] a = {0,1,2,3,4,5,6,7,8,9};
 		displaySelectionSort(a);
