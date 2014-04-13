@@ -18,6 +18,23 @@ public class Sorting {
 		}
 		return data;
 	}
+	
+	public static int[] insertionSort(int[] data){
+		int length = data.length;
+		int key = 0;
+		int j = 0;
+		for(int i= 1; i<length; j++){
+			key=data[j];
+			i=j-1;
+			while(i>=0 && data[i]>key){
+				data[i+1] = data[i];
+				i = i-1;
+				data[i+1] = data[i];
+			}
+		}
+		return data;
+	}
+	
 
 	private static void shuffleArray(int[] data) {
 		int index;
