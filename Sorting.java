@@ -2,7 +2,7 @@ package SortingAlgorithms;
 import java.util.Random;
 public class Sorting {
 
-	public static int[] selectionSort(int[] data) {
+	public static int[] selectionSort(int[] data, int delay, SortCanvas sortCanvas) {
 		int length = data.length;
 		int j = 0;
 		int temp = 0;
@@ -19,7 +19,7 @@ public class Sorting {
 		return data;
 	}
 	
-	public static int[] insertionSort(int[] data){
+	public static int[] insertionSort(int[] data, int delay, SortCanvas sortCanvas){
 		int length = data.length;
 		int key = 0;
 		int j = 0;
@@ -36,64 +36,37 @@ public class Sorting {
 	}
 	
 
-	private static void shuffleArray(int[] data) {
-		int index;
-		int temp;
-		Random random = new Random();
-		for (int i = data.length - 1; i > 0; i--) {
-			index = random.nextInt(i + 1);
-			//System.out.println(index);
-			temp = data[index];
-			data[index] = data[i];
-			data[i] = temp;
-		}
-	}
-	public int[] bubbleSort(int[] data){
+	
+	public synchronized void bubbleSort(int[] data, int delay, SortCanvas canvas)
+				throws InterruptedException {
 		  int length = data.length;
 		  int tmp = 0;
-		  for(int i = 0;i<length;i++){
-		    for(int j = (length-1);j>=(i+1);j--){
-		      if(data[j]<data[j-1]){
+		  canvas.draw(-1,-1,-1);
+		  System.out.println("Enter Bubble sort");
+		  for(int i = 0;i<length;i++) {
+		    for(int j = (length-1);j>=(i+1);j--) {
+		      if(data[j]<data[j-1]) {
+		    	System.out.println("Enter if SWAP");
 		        tmp = data[j];
 		        data[j]=data[j-1];
 		        data[j-1]=tmp;
+		        Thread.sleep(delay);
+		        canvas.draw(j,j-1,-1);
 		      }
 		    }
 		  }
-		  return data;
+		  System.out.println("Exit Bubble sort");
+		  canvas.draw(-1, -1, -1);
 		}
-	
-	
-	
-	
-	public static void main(String[] args){
-		int[] a = {0,1,2,3,4,5,6,7,8,9};
-		displaySelectionSort(a);
-		
-		
-		
-		
-		
-	}
 
-	private static void displaySelectionSort(int[] a) {
-		System.out.println("Selection Sort");
-		System.out.println("Before: ");
-		for (int i = 0; i < a.length; i++) {
-			System.out.print(a[i] + " ");
-		}
-		System.out.println();
-		shuffleArray(a);
-		System.out.println("After: ");
-		for (int i = 0; i < a.length; i++) {
-			System.out.print(a[i] + " ");
-		}
-		System.out.println();
-		selectionSort(a);
-		System.out.println("Sorted: ");
-		for (int i = 0; i < a.length; i++) {
-			System.out.print(a[i] + " ");
-		}
+	public void quickSort(int[] barsArray, int i, int j, int delay,
+			SortCanvas sortCanvas) {
+		// TODO Auto-generated method stub
 		
 	}
+	
+	
+	
+	
+	
 }

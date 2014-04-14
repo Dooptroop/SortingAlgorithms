@@ -20,17 +20,17 @@ public class SortPanel extends JPanel implements ActionListener {
 	// Radio Buttons for speed selection.
 	private JPanel spdPanel = new JPanel();
 	private ButtonGroup spdBtnGroup = new ButtonGroup();
-	private JRadioButton slow = new JRadioButton("BubbleSort", true);
-	private JRadioButton medium = new JRadioButton("SelectionSort");
-	private JRadioButton fast = new JRadioButton("InsertionSort");
+	private JRadioButton slow = new JRadioButton("Slow!", true);
+	private JRadioButton medium = new JRadioButton("Medium!!");
+	private JRadioButton fast = new JRadioButton("Fast!!!");
 	
 	// buttons for Reset, and Start
 	private JPanel funcPanel = new JPanel();
-	protected JButton reset = new JButton("Reset");
-	protected JButton start = new JButton("start");
+	protected static JButton reset = new JButton("Reset");
+	protected static JButton start = new JButton("start");
 	
 	SortCanvas canvas = new SortCanvas(500,300);
-	private int bars;
+	private int bars=15;
 	
 	public SortPanel() {
 		//add to button groups
@@ -71,8 +71,8 @@ public class SortPanel extends JPanel implements ActionListener {
 	}
 	public void start(){
 		//int bars = Integer.parseInt(textfield.getText());
-	    canvas.setBars(bars);
-	    canvas.sort(getSortType(), getDelaySpeed());
+	    //canvas.setBars(bars);
+	    canvas.sort();
 	    start.setEnabled(false);
 	    reset.setEnabled(false);
 	}
@@ -84,7 +84,6 @@ public class SortPanel extends JPanel implements ActionListener {
 		else if(action.getSource() == reset) {canvas.reset();}
 		
 	}
-	
 	
 	// Main method
     public static void main(String[] args) {
