@@ -29,7 +29,7 @@ public class SortPanel extends JPanel implements ActionListener {
 	protected static JButton reset = new JButton("Reset");
 	protected static JButton start = new JButton("start");
 	
-	SortCanvas canvas = new SortCanvas(500,300);
+	SortCanvas canvas = new SortCanvas(500,300, this);
 	private int bars=15;
 	
 	public SortPanel() {
